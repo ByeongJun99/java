@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="insertClient">
+		INSERT INTO CLIENT
+		VALUES(SEQ_CLNO.NEXTVAL, ?, ?, ?)
+	</entry>
+	<entry key="searchClient">
+		SELECT * 
+		FROM CLIENT 
+		WHERE CLID = ? AND CLPW = ?
+	</entry>
+	<entry key="selectList">
+		SELECT * 
+		FROM HOSPITAL 
+		ORDER BY HOSNO
+	</entry>
+	<entry key="updateVaccine">
+		UPDATE HOSPITAL 
+		SET VACCINE_AMOUNT = ? 
+		WHERE HOSNO = ?
+	</entry>
+	<entry key="insertHospital">
+		INSERT INTO HOSPITAL 
+		VALUES(SEQ_HOSNO.NEXTVAL, ?, ?, ?, ?)
+	</entry>
+	<entry key="deleteHospital">
+		DELETE 
+		FROM HOSPITAL 
+		WHERE HOSNAME = ?
+	</entry>
+</properties>
