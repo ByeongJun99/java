@@ -117,7 +117,7 @@ public class HospitalMenu {
 	public void usrMenu() {
 		while(true) {
 			System.out.println("==================사용자 메뉴==================");
-			System.out.println("1. 병원목록 조회");
+			System.out.println("1. 병원 목록 조회");
 			System.out.println("2. 백신 접종 예약하기");
 			System.out.println("0. 로그인 메뉴로 돌아가기");
 			System.out.print("메뉴 입력 : ");

@@ -10,21 +10,21 @@ public class MemberMenu {
 	}
 	
 	public void mainMenu() {
-		System.out.println("최대 등록 가능한 회원 수는 10명입니다.");
-		System.out.println("현재 등록된 회원 수는 " + mc.existMemberNum() + "명입니다.");
-		
-		if (mc.existMemberNum() != 10) {
-			System.out.println("1. 새 회원 등록");
-			System.out.println("2. 회원 검색");
-			System.out.println("3. 회원 정보 수정");
-			System.out.println("4. 회원 삭제");
-			System.out.println("5. 모두 출력");
-			System.out.println("9. 끝내기");
-			System.out.print("메뉴 번호 : ");
-			int menu = sc.nextInt();
-			sc.nextLine();
-			
-			while(true) {
+		while(true) {
+			if (mc.existMemberNum() != 10) {
+				System.out.println("최대 등록 가능한 회원 수는 10명입니다.");
+				System.out.println("현재 등록된 회원 수는 " + mc.existMemberNum() + "명입니다.");
+				
+				System.out.println("1. 새 회원 등록");
+				System.out.println("2. 회원 검색");
+				System.out.println("3. 회원 정보 수정");
+				System.out.println("4. 회원 삭제");
+				System.out.println("5. 모두 출력");
+				System.out.println("9. 끝내기");
+				System.out.print("메뉴 번호 : ");
+				int menu = sc.nextInt();
+				sc.nextLine();
+				
 				switch(menu) {
 				case 1:
 					insertMember();
@@ -51,40 +51,44 @@ public class MemberMenu {
 					sc.nextLine();
 				}
 			}
-		}
 		
-		else {
-			System.out.println("2. 회원 검색");
-			System.out.println("3. 회원 정보 수정");
-			System.out.println("4. 회원 삭제");
-			System.out.println("5. 모두 출력");
-			System.out.println("9. 끝내기");
-			System.out.print("메뉴 번호 : ");
-			int menu = sc.nextInt();
-			sc.nextLine();
-			
-			while(true) {
-				switch(menu) {
-				case 2:
-					searchMember();
-					break;
-				case 3:
-					updateMember();
-					break;
-				case 4:
-					deleteMember();
-					break;
-				case 5:
-					printAll();
-					break;
-				case 9:
-					System.out.println("프로그램을 종료합니다.");
-					return; 
-				default:
-					System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
+			else {
+				while(true) {
+					System.out.println("최대 등록 가능한 회원 수는 10명입니다.");
+					System.out.println("현재 등록된 회원 수는 10명입니다.");
+					System.out.println("회원 수가 모두 꽉 찼기 때문에 일부 메뉴만 오픈됩니다.");
+					
+					System.out.println("2. 회원 검색");
+					System.out.println("3. 회원 정보 수정");
+					System.out.println("4. 회원 삭제");
+					System.out.println("5. 모두 출력");
+					System.out.println("9. 끝내기");
 					System.out.print("메뉴 번호 : ");
-					menu = sc.nextInt();
+					int menu = sc.nextInt();
 					sc.nextLine();
+					
+					switch(menu) {
+					case 2:
+						searchMember();
+						break;
+					case 3:
+						updateMember();
+						break;
+					case 4:
+						deleteMember();
+						break;
+					case 5:
+						printAll();
+						break;
+					case 9:
+						System.out.println("프로그램을 종료합니다.");
+						return; 
+					default:
+						System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
+						System.out.print("메뉴 번호 : ");
+						menu = sc.nextInt();
+						sc.nextLine();
+					}
 				}
 			}
 		}
@@ -93,7 +97,7 @@ public class MemberMenu {
 	public void insertMember() {
 		System.out.print("아이디 : ");
 		String id = sc.nextLine();
-		while(mc.checkId(id) == false) {
+		while(mc.checkId(id) == true) {
 			System.out.println("중복된 아이디입니다. 다시 입력해주세요.");
 			System.out.print("아이디 : ");
 			id = sc.nextLine();
@@ -124,15 +128,15 @@ public class MemberMenu {
 	}
 	
 	public void searchMember() {
-		System.out.println("1. 아이디로 검색하기");
-		System.out.println("2. 이름으로 검색하기");
-		System.out.println("3. 이메일로 검색하");
-		System.out.println("9. 메인으로 돌아가기");
-		System.out.print("메뉴 번호 : ");
-		int choice = sc.nextInt();
-		sc.nextLine();
-		
 		while(true) {
+			System.out.println("1. 아이디로 검색하기");
+			System.out.println("2. 이름으로 검색하기");
+			System.out.println("3. 이메일로 검색하");
+			System.out.println("9. 메인으로 돌아가기");
+			System.out.print("메뉴 번호 : ");
+			int choice = sc.nextInt();
+			sc.nextLine();
+			
 			switch(choice) {
 			case 1:
 				searchId();
@@ -194,15 +198,15 @@ public class MemberMenu {
 	}
 	
 	public void updateMember() {
-		System.out.println("1. 비밀번호 수정하기");
-		System.out.println("2. 이름 수정하기");
-		System.out.println("3. 이메일 수정하기");
-		System.out.println("9. 메인으로 돌아가기");
-		System.out.print("메뉴 번호 : ");
-		int choice = sc.nextInt();
-		sc.nextLine();
-		
 		while(true) {
+			System.out.println("1. 비밀번호 수정하기");
+			System.out.println("2. 이름 수정하기");
+			System.out.println("3. 이메일 수정하기");
+			System.out.println("9. 메인으로 돌아가기");
+			System.out.print("메뉴 번호 : ");
+			int choice = sc.nextInt();
+			sc.nextLine();
+			
 			switch(choice) {
 			case 1:
 				updatePassword();
@@ -225,23 +229,28 @@ public class MemberMenu {
 	}
 	
 	public void updatePassword() {
-		System.out.print("아이디 : ");
+		System.out.print("수정할 회원의 아이디 : ");
 		String id = sc.nextLine();
-		System.out.print("이름 : ");
-		String name = sc.nextLine();
+		System.out.print("수정할 비밀번호 : ");
+		String pwd = sc.nextLine();
 		
-		if (!mc.updateName(id, name)) {
+		while(!mc.updatePassword(id, pwd)) {
 			System.out.println("존재하지 않는 아이디입니다.");
+			
+			System.out.print("수정할 회원의 아이디 : ");
+			id = sc.nextLine();
+			System.out.print("수정할 비밀번호 : ");
+			pwd = sc.nextLine();
 		}
-		else {
-			System.out.println("수정이 성공적으로 되었습니다.");
-		}
+		
+		System.out.println("수정이 성공적으로 되었습니다.");
+		mc.updatePassword(id, pwd);
 	}
 	
 	public void updateName() {
-		System.out.print("아이디 : ");
+		System.out.print("수정할 회원의 아이디 : ");
 		String id = sc.nextLine();
-		System.out.print("이름 : ");
+		System.out.print("수정할 이름 : ");
 		String name = sc.nextLine();
 		
 		if(!mc.updateName(id, name)) {
@@ -253,9 +262,9 @@ public class MemberMenu {
 	}
 	
 	public void updateEmail() {
-		System.out.print("아이디 : ");
+		System.out.print("수정할 회원의 아이디 : ");
 		String id = sc.nextLine();
-		System.out.print("이메일 : ");
+		System.out.print("수정할 이메일 : ");
 		String email = sc.nextLine();
 		
 		if(!mc.updateEmail(id, email)) {
@@ -267,14 +276,14 @@ public class MemberMenu {
 	}
 	
 	public void deleteMember() {
-		System.out.println("1. 특정 회원 삭제하기");
-		System.out.println("2. 모든 회원 삭제하기");
-		System.out.println("9. 메인으로 돌아가기");
-		System.out.print("메뉴 번호 : ");
-		int choice = sc.nextInt();
-		sc.nextLine();
-		
 		while(true) {
+			System.out.println("1. 특정 회원 삭제하기");
+			System.out.println("2. 모든 회원 삭제하기");
+			System.out.println("9. 메인으로 돌아가기");
+			System.out.print("메뉴 번호 : ");
+			int choice = sc.nextInt();
+			sc.nextLine();
+			
 			switch(choice) {
 			case 1:
 				deleteOne();
@@ -324,7 +333,9 @@ public class MemberMenu {
 			System.out.println("저장된 회원이 없습니다.");
 		}
 		else {
-			mc.printAll();
+			for(int i=0; i<mc.printAll().length; i++) {
+				System.out.println(mc.printAll()[i].toString());
+			}
 		}
 	}
 }
